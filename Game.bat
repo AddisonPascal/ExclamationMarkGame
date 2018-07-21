@@ -61,7 +61,12 @@ if %potentialGoalXCoord% GEQ 5 goto goalGeneration2
 if %potentialGoalXCoord%==0 goto goalGeneration2
 set originalYCoord=%yCoord%
 set originalXCoord=%xCoord%
+set /a countdown=100-%gameTick%
 cls
+echo Chase the exclamation marks!
+echo Points: %points%
+echo Countdown: %countdown%
+echo. 
 echo  -----
 echo ^|%coord.1.1%%coord.1.2%%coord.1.3%%coord.1.4%%coord.1.5%^|
 echo ^|%coord.2.1%%coord.2.2%%coord.2.3%%coord.2.4%%coord.2.5%^|
@@ -113,4 +118,16 @@ echo.
 call tmp.bat
 del tmp.bat
 set /a gameTick=%gameTick%+1
+if %gameTick%==100 goto gameOver
 goto playing
+
+:gameOver
+cls
+echo GAME OVER!
+echo. 
+echo Your Score: %points%
+echo. 
+timeout /t 3 >nul
+echo Press any key to exit...
+pause>nul
+exit
