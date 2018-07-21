@@ -32,12 +32,14 @@ set coord.5.4=
 set coord.5.5= 
 set yCoord=3
 set xCoord=3
+set gameTick=1
 goto playing
 
 :playing
 set originalYCoord=%yCoord%
 set originalXCoord=%xCoord%
 cls
+echo Game tick: %gameTick%
 echo  -----
 echo ^|%coord.1.1%%coord.1.2%%coord.1.3%%coord.1.4%%coord.1.5%^|
 echo ^|%coord.2.1%%coord.2.2%%coord.2.3%%coord.2.4%%coord.2.5%^|
@@ -70,7 +72,7 @@ goto gameTick
 
 :moveRight
 set /a xCoord=%xCoord%+1
-if %xCoord%==6 set xCoord=1
+if %xCoord%==6 set xCoord=5
 goto gameTick
 
 :gameTick
@@ -82,4 +84,5 @@ echo.
 )>tmp.bat
 call tmp.bat
 del tmp.bat
+set /a gameTick=%gameTick%+1
 goto playing
