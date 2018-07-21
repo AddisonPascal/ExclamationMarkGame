@@ -1,5 +1,5 @@
 :: ExclamationMarkGame by Addison Djatschenko
-:: Version 1.1
+:: Version 1.2
 
 @echo off
 title ExclamationMarkGame!
@@ -7,6 +7,10 @@ mode 1000
 goto start
 
 :start
+cls
+echo Are you ready?
+echo. 
+pause
 cls
 set coord.1.1= 
 set coord.1.2= 
