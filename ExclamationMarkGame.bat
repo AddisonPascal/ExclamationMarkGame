@@ -175,9 +175,8 @@ exit
 
 :highScore
 echo You have the high score!
-echo Previous record: %highScore%
-if "%highScoreName%"=="" goto save
-echo by %highScoreName% on %highScoreEpoch%
+if %highScore%==-1 goto save
+echo Previous record: %highScore% by %highScoreName% on %highScoreEpoch%
 :save
 (
 @echo off
