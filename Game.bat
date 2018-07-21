@@ -26,3 +26,7 @@ set coord.4.3=
 set coord.4.4=
 set coord.4.5=
 set coord.5.1=
+set coord.5.2=
+set coord.5.3=
+set coord.5.4=
+set coord.5.5=
