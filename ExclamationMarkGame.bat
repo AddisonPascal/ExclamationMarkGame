@@ -1,5 +1,5 @@
 :: ExclamationMarkGame by Addison Djatschenko
-:: Version 1.2
+:: Version 1.3
 
 @echo off
 title ExclamationMarkGame!
@@ -163,10 +163,11 @@ echo What is your name?
 set /p name="--> "
 call data.bat
 cls
-if %points% GEQ %highScore% goto highScore
 if %points%==%highScore% (
-echo You matched the high score!
+echo You matched the high score! (%highScore%^) by %highScoreName% on %highScoreEpoch%.
+goto end
 )
+if %points% GEQ %highScore% goto highScore
 echo You didn't beat the high score (%highScore%) by %highScoreName% on %highScoreEpoch%.
 :end
 echo Press any key to exit...
