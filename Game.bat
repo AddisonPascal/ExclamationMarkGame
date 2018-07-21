@@ -70,7 +70,7 @@ goto gameTick
 
 :moveRight
 set /a xCoord=%xCoord%+1
-if %xCoord%==0 set xCoord=1
+if %xCoord%==6 set xCoord=1
 goto gameTick
 
 :gameTick
