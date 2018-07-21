@@ -1,8 +1,8 @@
-:: Game by Addison Djatschenko
-:: Version 1.0
+:: ExclamationMarkGame by Addison Djatschenko
+:: Version 1.1
 
 @echo off
-title Game!
+title ExclamationMarkGame!
 mode 1000
 goto start
 
