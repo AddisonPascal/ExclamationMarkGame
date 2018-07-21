@@ -41,6 +41,7 @@ set yCoord=3
 set xCoord=3
 set points=0
 set gameTick=0
+set highScore=-1
 :firstGoalGeneration1
 set /a goalYCoord=%random:~-1,1%
 if %goalYCoord% GEQ 5 goto firstGoalGeneration1
@@ -129,12 +130,57 @@ if %gameTick%==100 goto gameOver
 goto playing
 
 :gameOver
+set hour=%time:~0,2%
+set m=AM
+if %hour% GEQ 11 set m=PM
+set minute=%time:~3,2%
+set day=%date:~4,2%
+set monthNumber=%date:~7,2%
+if %monthNumber%==01 set month=Jan
+if %monthNumber%==02 set month=Feb
+if %monthNumber%==03 set month=Mar
+if %monthNumber%==04 set month=Apr
+if %monthNumber%==05 set month=May
+if %monthNumber%==06 set month=Jun
+if %monthNumber%==07 set month=Jul
+if %monthNumber%==08 set month=Aug
+if %monthNumber%==09 set month=Sep
+if %monthNumber%==10 set month=Oct
+if %monthNumber%==11 set month=Nov
+if %monthNumber%==12 set month=Dec
+set year=%date:~-4,4%
+set modifiedTime=%hour%:%minute% %m%
+set modifiedDate=%day% %month% %year%
 cls
 echo GAME OVER!
 echo. 
 echo Your Score: %points%
 echo. 
-timeout /t 3 >nul
+echo What is your name?
+set /p name="--> "
+call data.bat
+cls
+if %points% GEQ %highScore% goto highScore
+if %points%==%highScore% (
+echo You matched the high score!
+)
+echo You didn't beat the high score (%highScore%) by %highScoreName% on %highScoreEpoch%.
+:end
 echo Press any key to exit...
 pause>nul
 exit
+
+:highScore
+echo You have the high score!
+echo Previous record: %highScore%
+if "%highScoreName%"=="" goto save
+echo by %highScoreName% on %highScoreEpoch%
+:save
+(
+@echo off
+echo set highScore=%points%
+echo set highScoreName=%name%
+echo set highScoreEpoch=%modifiedTime% on %modifiedDate%
+echo. 
+)>data.bat
+goto end
