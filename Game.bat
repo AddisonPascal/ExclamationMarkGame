@@ -1,3 +1,6 @@
+:: Game by Addison Djatschenko
+:: Version 1.0
+
 @echo off
 title Game!
 mode 1000
