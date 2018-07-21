@@ -132,7 +132,10 @@ goto playing
 :gameOver
 set hour=%time:~0,2%
 set m=AM
-if %hour% GEQ 11 set m=PM
+if %hour% GEQ 11 (
+set m=PM
+set /a hour=%hour%-12
+)
 set minute=%time:~3,2%
 set day=%date:~4,2%
 set monthNumber=%date:~7,2%
