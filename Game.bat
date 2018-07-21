@@ -39,7 +39,6 @@ goto playing
 set originalYCoord=%yCoord%
 set originalXCoord=%xCoord%
 cls
-echo Game tick: %gameTick%
 echo  -----
 echo ^|%coord.1.1%%coord.1.2%%coord.1.3%%coord.1.4%%coord.1.5%^|
 echo ^|%coord.2.1%%coord.2.2%%coord.2.3%%coord.2.4%%coord.2.5%^|
