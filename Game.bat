@@ -32,10 +32,33 @@ set coord.5.4=
 set coord.5.5= 
 set yCoord=3
 set xCoord=3
-set gameTick=1
-goto playing
+set points=0
+set gameTick=0
+:firstGoalGeneration1
+set /a goalYCoord=%random:~-1,1%
+if %goalYCoord% GEQ 5 goto firstGoalGeneration1
+if %goalYCoord%==0 goto firstGoalGeneration1
+:firstGoalGeneration2
+set /a goalXCoord=%random:~-1,1%
+if %goalXCoord% GEQ 5 goto firstGoalGeneration2
+if %goalXCoord%==0 goto firstGoalGeneration2
+(
+@echo off
+echo set coord.%goalYCoord%.%goalXCoord%=!
+echo. 
+)>tmp.bat
+call tmp.bat
+goto gameTick
 
 :playing
+:goalGeneration1
+set /a potentialGoalYCoord=%random:~-1,1%
+if %potentialGoalYCoord% GEQ 5 goto goalGeneration1
+if %potentialGoalYCoord%==0 goto goalGeneration1
+:goalGeneration2
+set /a potentialGoalXCoord=%random:~-1,1%
+if %potentialGoalXCoord% GEQ 5 goto goalGeneration2
+if %potentialGoalXCoord%==0 goto goalGeneration2
 set originalYCoord=%yCoord%
 set originalXCoord=%xCoord%
 cls
@@ -79,6 +102,12 @@ goto gameTick
 @echo off
 echo set coord.%originalYCoord%.%originalXCoord%= 
 echo set coord.%yCoord%.%xCoord%=+
+echo if %yCoord%==%goalYCoord% if %xCoord%==%goalXCoord% (
+echo set goalYCoord=%potentialGoalYCoord%
+echo set goalXCoord=%potentialGoalXCoord%
+echo set coord.%potentialGoalYCoord%.%potentialGoalXCoord%=!
+echo set /a points=%points%+1
+echo ^)
 echo. 
 )>tmp.bat
 call tmp.bat
