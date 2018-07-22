@@ -1,5 +1,5 @@
 :: ExclamationMarkGame by Addison Djatschenko
-:: Version 1.3
+:: Version 1.4
 
 @echo off
 title ExclamationMarkGame!
@@ -82,12 +82,22 @@ echo ^|%coord.3.1%%coord.3.2%%coord.3.3%%coord.3.4%%coord.3.5%^|
 echo ^|%coord.4.1%%coord.4.2%%coord.4.3%%coord.4.4%%coord.4.5%^|
 echo ^|%coord.5.1%%coord.5.2%%coord.5.3%%coord.5.4%%coord.5.5%^|
 echo  -----
-choice /c 0wasd /t 1 /d 0 >nul
+choice /c 0wasdp /t 1 /d 0 >nul
 if %ERRORLEVEL%==1 goto gameTick
 if %ERRORLEVEL%==2 goto moveForward
 if %ERRORLEVEL%==3 goto moveLeft
 if %ERRORLEVEL%==4 goto moveBackward
 if %ERRORLEVEL%==5 goto moveRight
+if %ERRORLEVEL%==6 goto paused
+goto playing
+
+:paused
+cls
+echo GAME PAUSED!
+echo Points: %points%
+echo Countdown: %countdown%
+echo. 
+pause
 goto playing
 
 :moveForward
