@@ -1,9 +1,8 @@
 :: ExclamationMarkGame by Addison Djatschenko
-:: Version 1.7.1
+:: Version 1.7.2
 
 @echo off
 title ExclamationMarkGame!
-mode 1000
 goto start
 
 :start
