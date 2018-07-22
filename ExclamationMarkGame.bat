@@ -1,5 +1,5 @@
 :: ExclamationMarkGame by Addison Djatschenko
-:: Version 1.6
+:: Version 1.7
 
 @echo off
 title ExclamationMarkGame!
@@ -188,11 +188,11 @@ set /p name="--> "
 call data.bat
 cls
 if %points%==%highScore% (
-echo You matched the high score! (%highScore%^) by %highScoreName% on %highScoreEpoch%.
+echo You matched the high score! (%highScore%^) by %highScoreName% on %highScoreEpoch% with %highScoreHesitations%.
 goto end
 )
 if %points% GEQ %highScore% goto highScore
-echo You didn't beat the high score (%highScore%) by %highScoreName% on %highScoreEpoch%.
+echo You didn't beat the high score (%highScore%) by %highScoreName% on %highScoreEpoch% with %highScoreHesitations%.
 :end
 echo Press any key to exit...
 pause>nul
@@ -201,13 +201,14 @@ exit
 :highScore
 echo You have the high score!
 if %highScore%==-1 goto save
-echo Previous record: %highScore% by %highScoreName% on %highScoreEpoch%
+echo Previous record: %highScore% by %highScoreName% on %highScoreEpoch% with %highScoreHesitations%.
 :save
 (
 @echo off
 echo set highScore=%points%
 echo set highScoreName=%name%
 echo set highScoreEpoch=%modifiedTime% on %modifiedDate%
+echo set highScoreHesitations=%hesitations%
 echo. 
 )>data.bat
 goto end
