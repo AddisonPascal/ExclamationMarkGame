@@ -1,5 +1,5 @@
 :: ExclamationMarkGame by Addison Djatschenko
-:: Version 1.5-pre
+:: Version 1.5-pre2
 
 @echo off
 title ExclamationMarkGame!
@@ -42,7 +42,7 @@ set coord.5.5=
 set yCoord=3
 set xCoord=3
 set points=0
-set gameTick=0
+set gameTick=-1
 set highScore=-1
 :firstGoalGeneration1
 set /a goalYCoord=%random:~-1,1%
