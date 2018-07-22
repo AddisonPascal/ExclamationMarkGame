@@ -1,5 +1,5 @@
 :: ExclamationMarkGame by Addison Djatschenko
-:: Version 1.5
+:: Version 1.6
 
 @echo off
 title ExclamationMarkGame!
@@ -10,6 +10,7 @@ goto start
 cls
 echo Are you ready?
 echo WASD to move,
+echo O to eat the !
 echo P to pause.
 echo. 
 pause
@@ -44,6 +45,7 @@ set xCoord=3
 set points=0
 set gameTick=-1
 set highScore=-1
+set hesitations=0
 :firstGoalGeneration1
 set /a goalYCoord=%random:~-1,1%
 if %goalYCoord% GEQ 5 goto firstGoalGeneration1
@@ -77,6 +79,7 @@ cls
 echo Chase the exclamation marks!
 echo Points: %points%
 echo Countdown: %countdown%
+echo Hesitations: %hesitations%
 echo Expected score: %expectedScore%
 echo. 
 echo  -----
@@ -86,13 +89,17 @@ echo ^|%coord.3.1%%coord.3.2%%coord.3.3%%coord.3.4%%coord.3.5%^|
 echo ^|%coord.4.1%%coord.4.2%%coord.4.3%%coord.4.4%%coord.4.5%^|
 echo ^|%coord.5.1%%coord.5.2%%coord.5.3%%coord.5.4%%coord.5.5%^|
 echo  -----
-choice /c 0wasdp /t 1 /d 0 >nul
-if %ERRORLEVEL%==1 goto gameTick
+choice /c 0wasdpo /t 1 /d 0 >nul
+if %ERRORLEVEL%==1 (
+set /a hesitations=%hesitations%+1
+goto gameTick
+)
 if %ERRORLEVEL%==2 goto moveForward
 if %ERRORLEVEL%==3 goto moveLeft
 if %ERRORLEVEL%==4 goto moveBackward
 if %ERRORLEVEL%==5 goto moveRight
 if %ERRORLEVEL%==6 goto paused
+if %ERRORLEVEL%==7 goto gameTick
 goto playing
 
 :paused
@@ -100,6 +107,7 @@ cls
 echo GAME PAUSED!
 echo Points: %points%
 echo Countdown: %countdown%
+echo Hesitations: %hesitations%
 echo Expected score: %expectedScore%
 echo. 
 pause
@@ -173,6 +181,7 @@ cls
 echo GAME OVER!
 echo. 
 echo Your Score: %points%
+echo Hesitations: %hesitations%
 echo. 
 echo What is your name?
 set /p name="--> "
