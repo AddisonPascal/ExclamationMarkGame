@@ -1,5 +1,5 @@
 :: ExclamationMarkGame by Addison Djatschenko
-:: Version 1.4
+:: Version 1.5-pre
 
 @echo off
 title ExclamationMarkGame!
@@ -9,6 +9,8 @@ goto start
 :start
 cls
 echo Are you ready?
+echo WASD to move,
+echo P to pause.
 echo. 
 pause
 cls
