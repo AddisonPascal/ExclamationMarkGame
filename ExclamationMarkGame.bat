@@ -1,5 +1,5 @@
 :: ExclamationMarkGame by Addison Djatschenko
-:: Version 1.7
+:: Version 1.7.1
 
 @echo off
 title ExclamationMarkGame!
@@ -186,6 +186,7 @@ echo.
 echo What is your name?
 set /p name="--> "
 call data.bat
+if "%highScoreHesitations%"=="" set highScoreHesitations=unknown
 cls
 if %points%==%highScore% (
 echo You matched the high score! (%highScore%^) by %highScoreName% on %highScoreEpoch% with %highScoreHesitations%.
