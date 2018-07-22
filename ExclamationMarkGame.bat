@@ -189,11 +189,11 @@ call data.bat
 if "%highScoreHesitations%"=="" set highScoreHesitations=unknown
 cls
 if %points%==%highScore% (
-echo You matched the high score! (%highScore%^) by %highScoreName% on %highScoreEpoch% with %highScoreHesitations%.
+echo You matched the high score! (%highScore%^) by %highScoreName% on %highScoreEpoch% with %highScoreHesitations% hesitations.
 goto end
 )
 if %points% GEQ %highScore% goto highScore
-echo You didn't beat the high score (%highScore%) by %highScoreName% on %highScoreEpoch% with %highScoreHesitations%.
+echo You didn't beat the high score (%highScore%) by %highScoreName% on %highScoreEpoch% with %highScoreHesitations% hesitations.
 :end
 echo Press any key to exit...
 pause>nul
@@ -202,7 +202,7 @@ exit
 :highScore
 echo You have the high score!
 if %highScore%==-1 goto save
-echo Previous record: %highScore% by %highScoreName% on %highScoreEpoch% with %highScoreHesitations%.
+echo Previous record: %highScore% by %highScoreName% on %highScoreEpoch% with %highScoreHesitations% hesitations.
 :save
 (
 @echo off
