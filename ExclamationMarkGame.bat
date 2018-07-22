@@ -1,5 +1,5 @@
 :: ExclamationMarkGame by Addison Djatschenko
-:: Version 1.5-pre2
+:: Version 1.5
 
 @echo off
 title ExclamationMarkGame!
@@ -72,10 +72,12 @@ if %potentialGoalXCoord%==0 goto goalGeneration2
 set originalYCoord=%yCoord%
 set originalXCoord=%xCoord%
 set /a countdown=100-%gameTick%
+set /a expectedScore=%points% * 100 / %gameTick%
 cls
 echo Chase the exclamation marks!
 echo Points: %points%
 echo Countdown: %countdown%
+echo Expected score: %expectedScore%
 echo. 
 echo  -----
 echo ^|%coord.1.1%%coord.1.2%%coord.1.3%%coord.1.4%%coord.1.5%^|
@@ -98,6 +100,7 @@ cls
 echo GAME PAUSED!
 echo Points: %points%
 echo Countdown: %countdown%
+echo Expected score: %expectedScore%
 echo. 
 pause
 goto playing
