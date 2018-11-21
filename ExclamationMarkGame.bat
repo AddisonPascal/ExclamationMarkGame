@@ -88,6 +88,7 @@ echo ^|%coord.3.1%%coord.3.2%%coord.3.3%%coord.3.4%%coord.3.5%^|
 echo ^|%coord.4.1%%coord.4.2%%coord.4.3%%coord.4.4%%coord.4.5%^|
 echo ^|%coord.5.1%%coord.5.2%%coord.5.3%%coord.5.4%%coord.5.5%^|
 echo  -----
+echo Your Coordinates: %xCoord%, %yCoord%
 choice /c 0wasdpo /t 1 /d 0 >nul
 if %ERRORLEVEL%==1 (
 set /a hesitations=%hesitations%+1
