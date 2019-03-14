@@ -6,6 +6,8 @@ title ExclamationMarkGame!
 goto start
 
 :start
+md Recorded
+del Recorded\*.*
 cls
 echo Are you ready?
 echo WASD to move,
@@ -88,6 +90,21 @@ echo ^|%coord.3.1%%coord.3.2%%coord.3.3%%coord.3.4%%coord.3.5%^|
 echo ^|%coord.4.1%%coord.4.2%%coord.4.3%%coord.4.4%%coord.4.5%^|
 echo ^|%coord.5.1%%coord.5.2%%coord.5.3%%coord.5.4%%coord.5.5%^|
 echo  -----
+(
+echo FRAME %gameTick%
+echo Points: %points%
+echo Countdown: %countdown%
+echo Hesitations: %hesitations%
+echo Expected score: %expectedScore%
+echo. 
+echo  -----
+echo ^|%coord.1.1%%coord.1.2%%coord.1.3%%coord.1.4%%coord.1.5%^|
+echo ^|%coord.2.1%%coord.2.2%%coord.2.3%%coord.2.4%%coord.2.5%^|
+echo ^|%coord.3.1%%coord.3.2%%coord.3.3%%coord.3.4%%coord.3.5%^|
+echo ^|%coord.4.1%%coord.4.2%%coord.4.3%%coord.4.4%%coord.4.5%^|
+echo ^|%coord.5.1%%coord.5.2%%coord.5.3%%coord.5.4%%coord.5.5%^|
+echo  -----
+)>Recorded\%gameTick%.txt
 echo Your Coordinates: %xCoord%, %yCoord%
 choice /c 0wasdpo /t 1 /d 0 >nul
 if %ERRORLEVEL%==1 (
